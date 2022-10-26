@@ -144,21 +144,17 @@ void add(){
 
 // Submenu for print
 void print(){
-	
 	if (isEmpty()) {
 		printf("Nobody's currently at the bank!\n");
-		printf("Press enter to continue...");
-		getch();
 	} else {
 		int num = 1;
 		char id = 'A';
-		printf("Queue No. %c%d\n", id, num);
 		
 		Node *curr = front;
-		while (curr->next != NULL){
+		while (curr != NULL){
+			printf("Queue No. %c%d\n", id, num);
 			printf("Name\t: %s\n", curr->name);
 			printf("Card\t: %s\n", curr->cardType);
-			curr = curr->next;
 			printf("\n");
 			
 			num++;
@@ -166,27 +162,29 @@ void print(){
 				id++;
 				num = 1;
 			}
-			printf("Queue No. %c%d\n", id, num);
+			
+			curr = curr->next;
 		}
-		
-		printf("Name\t: %s\n", curr->name);
-		printf("Card\t: %s", curr->cardType);
-		getch();
 	}
+	
+	printf("\nPress enter to continue...");
+	getch();
 }
 
 // Submenu for call
 void call(){
 	if (isEmpty()) {
 		printf("Nobody's currently at the bank!\n");
-		printf("Press enter to continue..."); getch();
 	}
 	else {
 		printf("Calling %s...\n", front->name);
-		printf("Thank you for coming!"); getch();
+		printf("Thank you for coming!");
 		
 		pop();
 	}
+	
+	printf("\nPress enter to continue...");
+	getch();
 }
 
 int main(){
