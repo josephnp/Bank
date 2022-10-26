@@ -23,12 +23,12 @@ Node* createNode(char* name, char* cardType, int priority){
 	strcpy(newNode->name, name);
 	strcpy(newNode->cardType, cardType);
 	newNode->priority = priority;
-	newNode->next = NULL;
-	newNode->prev = NULL;
+	newNode->next = newNode->prev = NULL;
 	
 	return newNode;
 }
 
+// Add new person to queue
 void push(char* name, char* cardType, int priority){
 	Node* temp = createNode(name, cardType, priority);
 	
@@ -58,6 +58,7 @@ void push(char* name, char* cardType, int priority){
 	}
 }
 
+// Delete person from queue
 void pop(){
 	Node *temp = front;
 	
@@ -71,11 +72,13 @@ void pop(){
 	}
 }
 
+// Checks if queue is empty
 bool isEmpty(){
 	if (front == NULL) return true;
 	else return false;
 }
 
+// Print menu display
 void menu(){
 	printf("Welcome to the Bank!\n");
 	printf("1. Enter the queue\n");
@@ -84,6 +87,7 @@ void menu(){
 	printf("4. Exit\n");
 }
 
+// Checks if card type is valid or not
 bool checkCardType(char* cardType) {
 	if (strcmp(cardType, "Platinum") != 0 && strcmp(cardType, "Diamond") != 0 && strcmp(cardType, "Gold") != 0 && 
 		strcmp(cardType, "Bronze") != 0 && strcmp(cardType, "Silver") != 0) {
@@ -93,6 +97,7 @@ bool checkCardType(char* cardType) {
 	return true;
 }
 
+// Submenu for add
 void add(){
 	
 	int priority;
@@ -137,6 +142,7 @@ void add(){
 	
 }
 
+// Submenu for print
 void print(){
 	
 	if (isEmpty()) {
@@ -169,6 +175,7 @@ void print(){
 	}
 }
 
+// Submenu for call
 void call(){
 	if (isEmpty()) {
 		printf("Nobody's currently at the bank!\n");
@@ -209,16 +216,6 @@ int main(){
 				break;
 		}
 	} while (menuChoice != 4);
-	
-	
-//	push("Amanda", "Platinum", 3);
-//	push("Caleb", "Bronze", 1);
-//	push("Bebe", "Diamond", 2);
-//	push("Nova", "Bronze", 1);
-//	push("Pierre", "Silver", 1);
-//	pop();
-//	
-//	print();
 	
 	
 	return 0;
